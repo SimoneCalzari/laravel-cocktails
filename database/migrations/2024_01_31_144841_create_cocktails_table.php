@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('cocktails', function (Blueprint $table) {
             $table->id();
+
             $table->string('nome', 20);
             $table->boolean('alcolico')->default(true);
             $table->string('ingredienti', 80);
             $table->tinyInteger('gradazione')->unsigned();
-           
-
 
             $table->timestamps();
         });

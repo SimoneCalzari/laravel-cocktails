@@ -10,29 +10,9 @@
 </head>
 
 <body>
-    <header>
-        <div class="container my-5 text-center">
-            <h1>Laravel Cocktail List</h1>
-        </div>
-    </header>
+    @include('shared.header')
 
-
-    <main>
-        <ul class="d-flex flex-wrap gap-5">
-            @foreach ($cocktails as $cocktail)
-                <li class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Nome: {{ $cocktail['nome'] }}</h5>
-                        <p class="card-text">Alcolico: {{ $cocktail['alcolico'] ? 'Si' : 'No' }}</p>
-                        <p class="card-text">Ingredienti: {{ $cocktail['ingredienti'] }}</p>
-                        <p class="card-text">Gradazione: {{ $cocktail['gradazione'] }}</p>
-                    </div>
-                </li>
-            @endforeach
-        </ul>
-    </main>
-
-
+    @yield('main')
 </body>
 
 </html>
