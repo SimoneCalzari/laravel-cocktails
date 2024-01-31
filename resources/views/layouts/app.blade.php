@@ -10,7 +10,18 @@
 </head>
 
 <body>
-ciao
+    <ul>
+        @foreach ($cocktails as $cocktail)
+            <li>Nome: {{ $cocktail['nome'] }}
+            </li>
+            <li>Alcolico: {{ $cocktail['alcolico'] ? 'Si' : 'No' }}
+            </li>
+            <li>Ingredienti: {{ $cocktail['ingredienti'] }}
+            </li>
+            <li>Gradazione: {{ $cocktail['gradazione'] }}
+            </li>
+        @endforeach
+    </ul>
 </body>
 
 </html>
