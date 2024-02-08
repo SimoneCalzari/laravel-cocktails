@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CocktailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Guest\PageController;
 
@@ -15,3 +16,5 @@ use App\Http\Controllers\Guest\PageController;
 */
 
 Route::get('/', [PageController::class, 'index']);
+
+Route::resource('/cocktails', CocktailController::class);
