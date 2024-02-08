@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('main')
+    <header class="text-center">
+        <a href="{{ route('cocktails.create') }}">Crea</a>
+    </header>
     <main>
+
         <table class="table">
             <thead>
                 <tr>
