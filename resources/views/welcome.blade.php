@@ -1,11 +1,14 @@
 @extends('layouts.app')
 
 @section('main')
-
-<button  class="btn btn-primary " ><a href="{{route('cocktails.index')}}" class="text-white">Lista Cocktails</a></button>
-    <main>
-        <div class="container">
-            <section class="row gy-4 py-5">
+    <main class="overflow-auto flex-grow-1 d-flex align-items-center justify-content-center">
+        <div class="container text-center ">
+            <header class="py-3 text-danger">
+                <h2>Benvenuti al bar di Andrea, Simone, Matteo, Filippo e Alessandro</h2>
+            </header>
+            <a href="{{ route('cocktails.index') }}" class="btn btn-danger py-3 px-3 fs-4">Lista
+                Cocktails <i class="fa-solid fa-martini-glass-citrus ms-1"></i></a>
+            {{-- <section class="row gy-4 py-5">
                 @foreach ($cocktails as $cocktail)
                     <div class="col-3 d-flex">
                         <div class="card w-100 bg-danger">
@@ -27,7 +30,7 @@
                     </div>
                 @endforeach
 
-            </section>
+            </section> --}}
         </div>
     </main>
 @endsection
