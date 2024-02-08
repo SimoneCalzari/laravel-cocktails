@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCocktailRequest;
 use App\Models\Cocktail;
 use Illuminate\Http\Request;
 
@@ -27,17 +28,20 @@ class CocktailController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCocktailRequest $request)
     {
+
+         $data= $request->validated();
+
         $cocktail = new Cocktail();
-        $cocktail->nome = $request['nome'];
-        $cocktail->ingredienti = $request['ingredienti'];
-        $cocktail->alcolico = $request['alcolico'];
-        $cocktail->gradazione = $request['gradazione'];
+        $cocktail->nome = $data['nome'];
+        $cocktail->ingredienti = $data['ingredienti'];
+        $cocktail->alcolico = $data['alcolico'];
+        $cocktail->gradazione = $data['gradazione'];
         $cocktail->save();
         return redirect()->route('cocktails.index');
     }
-
+        
     /**
      * Display the specified resource.
      */
@@ -49,9 +53,9 @@ class CocktailController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Cocktail $cocktail)
     {
-        //
+        return view('cocktails.edit', compact('cocktail'));
     }
 
     /**

@@ -12,6 +12,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Alcolico</th>
+                    <th scope="col"></th>
                     {{-- <th scope="col">Op</th> --}}
                 </tr>
             </thead>
@@ -22,6 +23,7 @@
                         <td>{{ $cocktail->nome }}</td>
                         <td>{{ $cocktail->alcolico ? 'Si' : 'No' }}</td>
                         <td><a href="{{ route('cocktails.show', $cocktail) }}">Dettagli</a></td>
+                        <td><a href="{{ route('cocktails.edit', $cocktail) }}">Modifica</a></td>
                         {{-- <td>@mdo</td> --}}
                     </tr>
                 @endforeach

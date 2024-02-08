@@ -14,21 +14,22 @@
                      </ul>
       </div>
       @endif
-            <form action="{{ route('cocktails.store') }}" method="POST">
+            <form action="{{ route('cocktails.update', $cocktail) }}" method="POST">
                 @csrf
+                @method('PUT')
                 <div class="mb-3">
                     <label for="nome" class="form-label">Nome Cocktail</label>
-                    <input type="text" class="form-control" id="nome" aria-describedby="emailHelp" name="nome" required value="{{ old('nome') }}">
+                    <input type="text" class="form-control" id="nome" aria-describedby="emailHelp" name="nome" required value="{{ old('nome', $cocktail->nome) }}">
                 </div>
                 <div class="mb-3">
                     <label for="ingredienti" class="form-label">Ingredienti</label>
                     <input type="text" class="form-control" id="ingredienti" aria-describedby="emailHelp"
-                        name="ingredienti" required value="{{ old('ingredienti') }}">
+                        name="ingredienti" required value="{{ old('ingredienti', $cocktail->ingredienti) }}">
                 </div>
                 <div class="mb-3">
                     <label for="gradazione" class="form-label">Gradazione</label>
                     <input type="text" class="form-control" id="gradazione" aria-describedby="emailHelp"
-                        name="gradazione" required value="{{ old('gradazione') }}">
+                        name="gradazione" required value="{{ old('gradazione', $cocktail->gradazione) }}">
                 </div>
 
                 <label for="alcolico" class="form-label">Alcolico</label>
