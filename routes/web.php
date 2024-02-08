@@ -15,6 +15,6 @@ use App\Http\Controllers\Guest\PageController;
 |
 */
 
-Route::get('/', [PageController::class, 'index']);
+Route::get('/', [PageController::class, 'index'])->name('welcome');
 
 Route::resource('/cocktails', CocktailController::class);
