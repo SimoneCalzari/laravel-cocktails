@@ -29,7 +29,13 @@ class CocktailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cocktail = new Cocktail();
+        $cocktail->nome = $request['nome'];
+        $cocktail->ingredienti = $request['ingredienti'];
+        $cocktail->alcolico = $request['alcolico'];
+        $cocktail->gradazione = $request['gradazione'];
+        $cocktail->save();
+        return redirect()->route('cocktails.index');
     }
 
     /**
