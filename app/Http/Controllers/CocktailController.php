@@ -11,9 +11,9 @@ class CocktailController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {   
+    {
         $cocktails = Cocktail::all();
-        return view('cocktails.index', compact('cocktails') );
+        return view('cocktails.index', compact('cocktails'));
     }
 
     /**
@@ -21,7 +21,7 @@ class CocktailController extends Controller
      */
     public function create()
     {
-        //
+        return view('cocktails.create');
     }
 
     /**
@@ -35,9 +35,9 @@ class CocktailController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Cocktail $cocktail)
     {
-        //
+        return view('cocktails.show', compact('cocktail'));
     }
 
     /**
