@@ -1,44 +1,50 @@
 @extends('layouts.app')
 
 @section('main')
-    <main>
+    <main class="flex-grow-1 overflow-auto">
 
-        <div class="container">
+        <div class="container py-3">
+            <header class="py-3 text-danger d-flex justify-content-between align-items-center">
+                <h2>Modifica un cocktail</h2>
+                <a href="{{ route('cocktails.index') }}" class="btn btn-danger">Back to cocktails <i
+                        class="fa-solid fa-wine-bottle"></i></a>
+            </header>
 
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul class="list-unstyled">
-              @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-              @endforeach
-                     </ul>
-      </div>
-      @endif
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form action="{{ route('cocktails.update', $cocktail) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
                     <label for="nome" class="form-label">Nome Cocktail</label>
-                    <input type="text" class="form-control" id="nome" aria-describedby="emailHelp" name="nome" required value="{{ old('nome', $cocktail->nome) }}">
+                    <input type="text" class="form-control @error('nome') is-invalid @enderror" id="nome"
+                        name="nome" required value="{{ old('nome', $cocktail->nome) }}">
                 </div>
                 <div class="mb-3">
                     <label for="ingredienti" class="form-label">Ingredienti</label>
-                    <input type="text" class="form-control" id="ingredienti" aria-describedby="emailHelp"
+                    <input type="text" class="form-control  @error('ingredienti') is-invalid @enderror" id="ingredienti"
                         name="ingredienti" required value="{{ old('ingredienti', $cocktail->ingredienti) }}">
                 </div>
-                <div class="mb-3">
+                <label for="alcolico" class="form-label">Alcolico</label>
+                <select class="form-select mb-3  @error('alcolico') is-invalid @enderror" name="alcolico">
+                    <option default value="Pippo">Scegli tra le opzioni</option>
+                    <option value="1" @if (old('alcolico', $cocktail->alcolico) === '1') selected @endif>Si</option>
+                    <option value="0" @if (old('alcolico', $cocktail->alcolico) === '0') selected @endif>No</option>
+                </select>
+                <div class="mb-4">
                     <label for="gradazione" class="form-label">Gradazione</label>
-                    <input type="text" class="form-control" id="gradazione" aria-describedby="emailHelp"
+                    <input type="number" class="form-control  @error('gradazione') is-invalid @enderror" id="gradazione"
                         name="gradazione" required value="{{ old('gradazione', $cocktail->gradazione) }}">
                 </div>
-
-                <label for="alcolico" class="form-label">Alcolico</label>
-                <select class="form-select" aria-label="Default select example" name="alcolico">
-
-                    <option value="1">si</option>
-                    <option value="0">no</option>
-                </select>
-                <button type="submit" class="btn btn-primary">Crea</button>
+                <button type="submit" class="btn btn-outline-danger">Aggiorna <i
+                        class="fa-regular fa-paper-plane"></i></button>
             </form>
         </div>
     </main>

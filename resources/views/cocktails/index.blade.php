@@ -11,7 +11,17 @@
                 <a class="btn btn-outline-danger fs-5" href="{{ route('cocktails.create') }}">Crea <i
                         class="fa-solid fa-plus ms-1 fs-6"></i></a>
             </header>
-            <table class="table table-bordered border-primary w-75 mx-auto text-center align-middle">
+            @if (session('new_record'))
+                <div class="alert alert-success w-75 mx-auto" role="alert">
+                    {{ session('new_record') }}
+                </div>
+            @endif
+            @if (session('delete_record'))
+                <div class="alert alert-danger w-75 mx-auto" role="alert">
+                    {{ session('delete_record') }}
+                </div>
+            @endif
+            <table class="table table-bordered border-info w-75 mx-auto text-center align-middle ">
                 <thead>
                     <tr>
                         <th>#</th>

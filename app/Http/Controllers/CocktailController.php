@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreCocktailRequest;
+use App\Http\Requests\CocktailRequest;
 use App\Models\Cocktail;
 use Illuminate\Http\Request;
 
@@ -28,10 +28,10 @@ class CocktailController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCocktailRequest $request)
+    public function store(CocktailRequest $request)
     {
 
-         $data= $request->validated();
+        $data = $request->validated();
 
         $cocktail = new Cocktail();
         $cocktail->nome = $data['nome'];
@@ -39,9 +39,9 @@ class CocktailController extends Controller
         $cocktail->alcolico = $data['alcolico'];
         $cocktail->gradazione = $data['gradazione'];
         $cocktail->save();
-        return redirect()->route('cocktails.index');
+        return redirect()->route('cocktails.index')->with('new_record', "Il cocktail $cocktail->nome #$cocktail->id è stato aggiunto con successo");
     }
-        
+
     /**
      * Display the specified resource.
      */
@@ -61,18 +61,19 @@ class CocktailController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update( StoreCocktailRequest $request, Cocktail $cocktail)
+    public function update(CocktailRequest $request, Cocktail $cocktail)
     {
-        
-         $data= $request->validated();
 
-       
+        $data = $request->validated();
+
+
         $cocktail->nome = $data['nome'];
         $cocktail->ingredienti = $data['ingredienti'];
         $cocktail->alcolico = $data['alcolico'];
         $cocktail->gradazione = $data['gradazione'];
         $cocktail->save();
-        return redirect()->route('cocktails.index');
+
+        return redirect()->route('cocktails.show', $cocktail)->with('update_record', "Il cocktail $cocktail->nome #$cocktail->id è stato aggiornato con successo");
     }
 
     /**
@@ -80,7 +81,9 @@ class CocktailController extends Controller
      */
     public function destroy(Cocktail $cocktail)
     {
-      $cocktail->delete();
-        return redirect()->route('cocktails.index');
+        $nome_cocktail = $cocktail->nome;
+        $id_cocktail = $cocktail->id;
+        $cocktail->delete();
+        return redirect()->route('cocktails.index')->with('delete_record', "Il cocktail $nome_cocktail #$id_cocktail è stato rimosso");;
     }
 }
