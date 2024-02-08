@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('main')
+
+<button  class="btn btn-primary " ><a href="{{route('cocktails.index')}}" class="text-white">Lista Cocktails</a></button>
     <main>
         <div class="container">
             <section class="row gy-4 py-5">

@@ -78,8 +78,9 @@ class CocktailController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Cocktail $cocktail)
     {
-        //
+      $cocktail->delete();
+        return redirect()->route('cocktails.index');
     }
 }

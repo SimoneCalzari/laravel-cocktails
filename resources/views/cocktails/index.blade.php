@@ -3,7 +3,10 @@
 @section('main')
     <header class="text-center">
         <a href="{{ route('cocktails.create') }}">Crea</a>
+        <button class="btn btn-primary" ><a class="text-white" href="/">Home</a></button>
     </header>
+
+    
     <main>
 
         <table class="table">
@@ -24,6 +27,11 @@
                         <td>{{ $cocktail->alcolico ? 'Si' : 'No' }}</td>
                         <td><a href="{{ route('cocktails.show', $cocktail) }}">Dettagli</a></td>
                         <td><a href="{{ route('cocktails.edit', $cocktail) }}">Modifica</a></td>
+                        <td><form action="{{ route('cocktails.destroy', $cocktail)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                       <button class="btn btn-danger">Elimina</button>
+                        </form></td>
                         {{-- <td>@mdo</td> --}}
                     </tr>
                 @endforeach
