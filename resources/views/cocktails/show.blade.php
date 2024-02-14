@@ -17,11 +17,13 @@
                     {{-- <p class="card-text">{{ $cocktail->ingredienti }}</p> --}}
                     <h5 class="card-title">Ingredienti</h5>
                     <ul>
-                        @foreach ($cocktail->ingredients as $ingredient)
-                            <li>
-                                {{ $ingredient->name }}
-                            </li>
-                        @endforeach
+                        @if ($cocktail->ingredients->isEmpty())
+                            <li>Non sono indicati ingredienti</li>
+                        @else
+                            @foreach ($cocktail->ingredients as $ingredient)
+                                <li>{{ $ingredient->name }}</li>
+                            @endforeach
+                        @endif
                     </ul>
                     <h5 class="card-title">Alcolico</h5>
                     <p class="card-text">{{ $cocktail->alcolico ? 'Si' : 'No' }}</p>
