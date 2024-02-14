@@ -43,20 +43,17 @@
                         name="gradazione" required value="{{ old('gradazione') }}">
                 </div>
 
-
-                @foreach ($ingredients as $ingredient)
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="name" value="{{ $ingredient->id }}"
-                            name="ingredients[]" {{ in_array($ingredient->id, old('ingredients', [])) ? 'checked' : '' }}>
-                        <label class="form-check-label" for="name">{{ $ingredient->name }}</label>
-                    </div>
-                @endforeach
-
-
-
-
-
-
+                <div class="mb-3">
+                    <h5>Ingredienti</h5>
+                    @foreach ($ingredients as $ingredient)
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="name" value="{{ $ingredient->id }}"
+                                name="ingredients[]"
+                                {{ in_array($ingredient->id, old('ingredients', [])) ? 'checked' : '' }}>
+                            <label class="form-check-label" for="name">{{ ucfirst($ingredient->name) }}</label>
+                        </div>
+                    @endforeach
+                </div>
 
                 <div>
                     <button type="submit" class="btn btn-outline-danger">Crea <i

@@ -27,11 +27,6 @@
                     <input type="text" class="form-control @error('nome') is-invalid @enderror" id="nome"
                         name="nome" required value="{{ old('nome', $cocktail->nome) }}">
                 </div>
-                {{-- <div class="mb-3"> --}}
-                {{-- <label for="ingredienti" class="form-label">Ingredienti</label>
-                    <input type="text" class="form-control  @error('ingredienti') is-invalid @enderror" id="ingredienti"
-                        name="ingredienti" required value="{{ old('ingredienti', $cocktail->ingredienti) }}">
-                </div> --}}
                 <label for="alcolico" class="form-label">Alcolico</label>
                 <select class="form-select mb-3  @error('alcolico') is-invalid @enderror" name="alcolico">
                     <option default value="Pippo">Scegli tra le opzioni</option>
@@ -43,23 +38,27 @@
                     <input type="number" class="form-control  @error('gradazione') is-invalid @enderror" id="gradazione"
                         name="gradazione" required value="{{ old('gradazione', $cocktail->gradazione) }}">
                 </div>
-                @foreach ($ingredients as $ingredient)
-                    @if ($errors->any())
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="name" value="{{ $ingredient->id }}"
-                                name="ingredients[]"
-                                {{ in_array($ingredient->id, old('ingredients', [])) ? 'checked' : '' }}>
-                            <label class="form-check-label" for="name">{{ $ingredient->name }}</label>
-                        </div>
-                    @else
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="name" value="{{ $ingredient->id }}"
-                                name="ingredients[]"
-                                {{ $cocktail->ingredients->contains($ingredient->id) ? 'checked' : '' }}>
-                            <label class="form-check-label" for="name">{{ $ingredient->name }}</label>
-                        </div>
-                    @endif
-                @endforeach
+                <div class="mb-3">
+                    <h5>Ingredienti</h5>
+                    @foreach ($ingredients as $ingredient)
+                        @if ($errors->any())
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="name" value="{{ $ingredient->id }}"
+                                    name="ingredients[]"
+                                    {{ in_array($ingredient->id, old('ingredients', [])) ? 'checked' : '' }}>
+                                <label class="form-check-label" for="name">{{ ucfirst($ingredient->name) }}</label>
+                            </div>
+                        @else
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="name" value="{{ $ingredient->id }}"
+                                    name="ingredients[]"
+                                    {{ $cocktail->ingredients->contains($ingredient->id) ? 'checked' : '' }}>
+                                <label class="form-check-label" for="name">{{ ucfirst($ingredient->name) }}</label>
+                            </div>
+                        @endif
+                    @endforeach
+
+                </div>
                 <div>
                     <button type="submit" class="btn btn-outline-danger">Aggiorna <i
                             class="fa-regular fa-paper-plane"></i></button>

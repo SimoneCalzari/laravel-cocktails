@@ -13,16 +13,17 @@
                 <div class="w-50 p-4">
                     <h5 class="card-title">Nome</h5>
                     <p class="card-text">{{ $cocktail->nome }}</p>
-                    {{-- <h5 class="card-title">Ingredienti</h5> --}}
-                    {{-- <p class="card-text">{{ $cocktail->ingredienti }}</p> --}}
-                    <h5 class="card-title">Ingredienti</h5>
-                    <ul>
-                        @foreach ($cocktail->ingredients as $ingredient)
-                            <li>
-                                {{ $ingredient->name }}
-                            </li>
-                        @endforeach
-                    </ul>
+                    @if ($cocktail->ingredients->count())
+                        <h5 class="card-title">Ingredienti</h5>
+                        <ul>
+                            @foreach ($cocktail->ingredients as $ingredient)
+                                <li>
+                                    <a
+                                        href="{{ route('ingredients.show', $ingredient) }}">{{ ucfirst($ingredient->name) }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
                     <h5 class="card-title">Alcolico</h5>
                     <p class="card-text">{{ $cocktail->alcolico ? 'Si' : 'No' }}</p>
                     <h5 class="card-title">Gradazione</h5>
