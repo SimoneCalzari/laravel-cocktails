@@ -3,6 +3,7 @@
 use App\Http\Controllers\CocktailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Guest\PageController;
+use App\Http\Controllers\IngredientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +19,5 @@ use App\Http\Controllers\Guest\PageController;
 Route::get('/', [PageController::class, 'index'])->name('welcome');
 
 Route::resource('/cocktails', CocktailController::class);
+
+Route::resource('/ingredients', IngredientController::class);

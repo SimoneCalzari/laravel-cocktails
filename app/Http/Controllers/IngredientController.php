@@ -12,8 +12,9 @@ class IngredientController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
+    {   
+        $ingredients= Ingredient::all();
+        return view('ingredients.index', compact('ingredients'));
     }
 
     /**
