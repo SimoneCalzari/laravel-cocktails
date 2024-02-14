@@ -42,8 +42,25 @@
                     <input type="number" class="form-control  @error('gradazione') is-invalid @enderror" id="gradazione"
                         name="gradazione" required value="{{ old('gradazione') }}">
                 </div>
+
+               
+                    @foreach ($ingredients as $ingredient)
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="name" value="{{$ingredient->id}}" name="ingredients[]">
+        <label class="form-check-label" for="name">{{$ingredient->name}}</label>
+        </div>
+                    @endforeach
+
+
+
+
+
+
+
+                <div>
                 <button type="submit" class="btn btn-outline-danger">Crea <i
                         class="fa-regular fa-paper-plane"></i></button>
+                        </div>
             </form>
         </div>
     </main>

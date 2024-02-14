@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CocktailRequest;
 use App\Models\Cocktail;
+use App\Models\Ingredient;
 use Illuminate\Http\Request;
 
 class CocktailController extends Controller
@@ -22,7 +23,9 @@ class CocktailController extends Controller
      */
     public function create()
     {
-        return view('cocktails.create');
+
+        $ingredients =  Ingredient::all();
+        return view('cocktails.create',compact('ingredients'));
     }
 
     /**
@@ -39,6 +42,7 @@ class CocktailController extends Controller
         $cocktail->alcolico = $data['alcolico'];
         $cocktail->gradazione = $data['gradazione'];
         $cocktail->save();
+        $cocktail->ingredients()->sync($data['ingredients']);
         return redirect()->route('cocktails.index')->with('new_record', "Il cocktail $cocktail->nome #$cocktail->id è stato aggiunto con successo");
     }
 

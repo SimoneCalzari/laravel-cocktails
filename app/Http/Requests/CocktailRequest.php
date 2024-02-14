@@ -25,7 +25,9 @@ class CocktailRequest extends FormRequest
             'nome' => 'required|string|max:20',
             'alcolico' => 'required|boolean',
             'ingredienti' => 'required|string|max:80',
-            'gradazione' => 'required|integer|max:255'
+            'gradazione' => 'required|integer|max:255',
+            'ingredients' => 'nullable|exists:ingredients,id',
+
         ];
     }
 }
