@@ -38,7 +38,7 @@ class CocktailController extends Controller
 
         $cocktail = new Cocktail();
         $cocktail->nome = $data['nome'];
-        $cocktail->ingredienti = $data['ingredienti'];
+        // $cocktail->ingredienti = $data['ingredienti'];
         $cocktail->alcolico = $data['alcolico'];
         $cocktail->gradazione = $data['gradazione'];
         $cocktail->save();
@@ -73,7 +73,7 @@ class CocktailController extends Controller
 
 
         $cocktail->nome = $data['nome'];
-        $cocktail->ingredienti = $data['ingredienti'];
+        // $cocktail->ingredienti = $data['ingredienti'];
         $cocktail->alcolico = $data['alcolico'];
         $cocktail->gradazione = $data['gradazione'];
         if (isset($data['ingredients'])) {

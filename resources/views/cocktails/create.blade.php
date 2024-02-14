@@ -26,11 +26,11 @@
                     <input type="text" class="form-control @error('nome') is-invalid @enderror" id="nome"
                         name="nome" required value="{{ old('nome') }}">
                 </div>
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <label for="ingredienti" class="form-label">Ingredienti</label>
                     <input type="text" class="form-control  @error('ingredienti') is-invalid @enderror" id="ingredienti"
                         name="ingredienti" required value="{{ old('ingredienti') }}">
-                </div>
+                </div> --}}
                 <label for="alcolico" class="form-label">Alcolico</label>
                 <select class="form-select mb-3  @error('alcolico') is-invalid @enderror" name="alcolico">
                     <option value="Pippo">Scegli tra le opzioni</option>

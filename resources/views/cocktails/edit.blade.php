@@ -27,11 +27,11 @@
                     <input type="text" class="form-control @error('nome') is-invalid @enderror" id="nome"
                         name="nome" required value="{{ old('nome', $cocktail->nome) }}">
                 </div>
-                <div class="mb-3">
-                    <label for="ingredienti" class="form-label">Ingredienti</label>
+                {{-- <div class="mb-3"> --}}
+                {{-- <label for="ingredienti" class="form-label">Ingredienti</label>
                     <input type="text" class="form-control  @error('ingredienti') is-invalid @enderror" id="ingredienti"
                         name="ingredienti" required value="{{ old('ingredienti', $cocktail->ingredienti) }}">
-                </div>
+                </div> --}}
                 <label for="alcolico" class="form-label">Alcolico</label>
                 <select class="form-select mb-3  @error('alcolico') is-invalid @enderror" name="alcolico">
                     <option default value="Pippo">Scegli tra le opzioni</option>
@@ -60,8 +60,11 @@
                         </div>
                     @endif
                 @endforeach
-                <button type="submit" class="btn btn-outline-danger">Aggiorna <i
-                        class="fa-regular fa-paper-plane"></i></button>
+                <div>
+                    <button type="submit" class="btn btn-outline-danger">Aggiorna <i
+                            class="fa-regular fa-paper-plane"></i></button>
+                </div>
+
             </form>
         </div>
     </main>
