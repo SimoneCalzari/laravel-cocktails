@@ -34,8 +34,8 @@
                 <label for="alcolico" class="form-label">Alcolico</label>
                 <select class="form-select mb-3  @error('alcolico') is-invalid @enderror" name="alcolico">
                     <option value="Pippo">Scegli tra le opzioni</option>
-                    <option value="1" @if (old('alcolico') === '1') selected @endif>Si</option>
-                    <option value="0" @if (old('alcolico') === '0') selected @endif>No</option>
+                    <option value="1" @if (old('alcolico') == '1') selected @endif>Si</option>
+                    <option value="0" @if (old('alcolico') == '0') selected @endif>No</option>
                 </select>
                 <div class="mb-4">
                     <label for="gradazione" class="form-label">Gradazione</label>

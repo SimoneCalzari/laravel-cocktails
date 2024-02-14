@@ -25,7 +25,7 @@ class CocktailController extends Controller
     {
 
         $ingredients =  Ingredient::all();
-        return view('cocktails.create',compact('ingredients'));
+        return view('cocktails.create', compact('ingredients'));
     }
 
     /**
@@ -59,7 +59,8 @@ class CocktailController extends Controller
      */
     public function edit(Cocktail $cocktail)
     {
-        return view('cocktails.edit', compact('cocktail'));
+        $ingredients =  Ingredient::all();
+        return view('cocktails.edit', compact('cocktail', 'ingredients'));
     }
 
     /**
@@ -75,6 +76,11 @@ class CocktailController extends Controller
         $cocktail->ingredienti = $data['ingredienti'];
         $cocktail->alcolico = $data['alcolico'];
         $cocktail->gradazione = $data['gradazione'];
+        if (isset($data['ingredients'])) {
+            $cocktail->ingredients()->sync($data['ingredients']);
+        } else {
+            $cocktail->ingredients()->sync([]);
+        }
         $cocktail->save();
 
         return redirect()->route('cocktails.show', $cocktail)->with('update_record', "Il cocktail $cocktail->nome #$cocktail->id è stato aggiornato con successo");
