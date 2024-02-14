@@ -39,6 +39,8 @@ class IngredientController extends Controller
     public function show(Ingredient $ingredient)
     {
         //
+          
+        return view('ingredients.show', compact('ingredient'));
     }
 
     /**
