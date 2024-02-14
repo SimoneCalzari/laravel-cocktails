@@ -38,7 +38,6 @@ class CocktailController extends Controller
 
         $cocktail = new Cocktail();
         $cocktail->nome = $data['nome'];
-        // $cocktail->ingredienti = $data['ingredienti'];
         $cocktail->alcolico = $data['alcolico'];
         $cocktail->gradazione = $data['gradazione'];
         $cocktail->save();
@@ -73,7 +72,6 @@ class CocktailController extends Controller
 
 
         $cocktail->nome = $data['nome'];
-        // $cocktail->ingredienti = $data['ingredienti'];
         $cocktail->alcolico = $data['alcolico'];
         $cocktail->gradazione = $data['gradazione'];
         if (isset($data['ingredients'])) {
@@ -90,11 +88,11 @@ class CocktailController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Cocktail $cocktail)
-    {   
+    {
         $cocktail->ingredients()->sync([]);
         $nome_cocktail = $cocktail->nome;
         $id_cocktail = $cocktail->id;
         $cocktail->delete();
-        return redirect()->route('cocktails.index')->with('delete_record', "Il cocktail $nome_cocktail #$id_cocktail è stato rimosso");;
+        return redirect()->route('cocktails.index')->with('delete_record', "Il cocktail $nome_cocktail #$id_cocktail è stato rimosso");
     }
 }

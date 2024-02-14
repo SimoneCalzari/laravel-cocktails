@@ -47,10 +47,11 @@
                     <h5>Ingredienti</h5>
                     @foreach ($ingredients as $ingredient)
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="name" value="{{ $ingredient->id }}"
-                                name="ingredients[]"
+                            <input class="form-check-input" type="checkbox" id="ingredient{{ $ingredient->id }}"
+                                value="{{ $ingredient->id }}" name="ingredients[]"
                                 {{ in_array($ingredient->id, old('ingredients', [])) ? 'checked' : '' }}>
-                            <label class="form-check-label" for="name">{{ ucfirst($ingredient->name) }}</label>
+                            <label class="form-check-label"
+                                for="ingredient{{ $ingredient->id }}">{{ ucfirst($ingredient->name) }}</label>
                         </div>
                     @endforeach
                 </div>

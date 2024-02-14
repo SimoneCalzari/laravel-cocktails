@@ -6,8 +6,8 @@
         <div class="container">
             <header class="w-75 mx-auto d-flex justify-content-between align-items-center fw-bold">
                 <a class="btn btn-outline-danger fs-5" href="{{ route('cocktails.index') }}">Cocktails <i
-                        class="fa-solid fa-house ms-1 fs-6"></i></a>
-                <h2 class="text-danger fs-1 py-3">Lista ingredienti</h2>
+                        class="fa-solid fa-backward ms-1 fs-6"></i></a>
+                <h2 class="text-danger fs-1 py-3">Lista Ingredienti</h2>
                 <a class="btn btn-outline-danger fs-5" href="{{ route('ingredients.create') }}">Crea <i
                         class="fa-solid fa-plus ms-1 fs-6"></i></a>
             </header>
@@ -26,6 +26,8 @@
                     <tr>
                         <th>#</th>
                         <th>Nome</th>
+                        <th>Creato</th>
+                        <th>Aggiornato</th>
                         <th>Azioni sul ingredienti</th>
                     </tr>
                 </thead>
@@ -34,14 +36,14 @@
                         <tr>
                             <td>{{ $ingredient->id }}</td>
                             <td>{{ $ingredient->name }}</td>
-                            
+                            <td>{{ $ingredient->created_at }}</td>
+                            <td>{{ $ingredient->updated_at }}</td>
                             <td>
-                                <a href="{{ route('ingredients.show', $ingredient) }}" class="btn btn-info btn-sm">Dettagli <i
-                                        class="fa-solid fa-circle-info ms-1"></i></a>
+                                <a href="{{ route('ingredients.show', $ingredient) }}" class="btn btn-info btn-sm">Dettagli
+                                    <i class="fa-solid fa-circle-info ms-1"></i></a>
                                 <a href="{{ route('ingredients.edit', $ingredient) }}"
                                     class="btn btn-success btn-sm mx-2">Modifica <i
                                         class="fa-solid fa-pen-to-square ms-1"></i></a>
-
                                 <form action="{{ route('ingredients.destroy', $ingredient) }}" method="POST"
                                     class="d-inline-block">
                                     @csrf
@@ -50,11 +52,8 @@
                                             class="fa-solid fa-trash-can ms-1"></i></button>
                                 </form>
                             </td>
-
                         </tr>
                     @endforeach
-
-
                 </tbody>
             </table>
         </div>

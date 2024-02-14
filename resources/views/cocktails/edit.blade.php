@@ -43,15 +43,16 @@
                     @foreach ($ingredients as $ingredient)
                         @if ($errors->any())
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="name" value="{{ $ingredient->id }}"
-                                    name="ingredients[]"
+                                <input class="form-check-input" type="checkbox" id="ingredient{{ $ingredient->id }}"
+                                    value="{{ $ingredient->id }}" name="ingredients[]"
                                     {{ in_array($ingredient->id, old('ingredients', [])) ? 'checked' : '' }}>
-                                <label class="form-check-label" for="name">{{ ucfirst($ingredient->name) }}</label>
+                                <label class="form-check-label"
+                                    for="ingredient{{ $ingredient->id }}">{{ ucfirst($ingredient->name) }}</label>
                             </div>
                         @else
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="name" value="{{ $ingredient->id }}"
-                                    name="ingredients[]"
+                                <input class="form-check-input" type="checkbox" id="name"
+                                    value="{{ $ingredient->id }}" name="ingredients[]"
                                     {{ $cocktail->ingredients->contains($ingredient->id) ? 'checked' : '' }}>
                                 <label class="form-check-label" for="name">{{ ucfirst($ingredient->name) }}</label>
                             </div>
