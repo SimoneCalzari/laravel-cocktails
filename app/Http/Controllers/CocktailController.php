@@ -90,7 +90,8 @@ class CocktailController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Cocktail $cocktail)
-    {
+    {   
+        $cocktail->ingredients()->sync([]);
         $nome_cocktail = $cocktail->nome;
         $id_cocktail = $cocktail->id;
         $cocktail->delete();
