@@ -6,17 +6,19 @@
         <div class="container">
             <header class="w-75 mx-auto d-flex justify-content-between align-items-center fw-bold">
                 <a class="btn btn-outline-danger fs-5" href="{{ route('welcome') }}">Home <i
-                    class="fa-solid fa-house ms-1 fs-6"></i>
+                        class="fa-solid fa-house ms-1 fs-6"></i>
                 </a>
-                <h2 class="text-danger fs-1 py-3">Lista cocktails</h2>
+                <h2 class="text-danger fs-1 py-3">Lista Cocktails</h2>
                 <a class="btn btn-outline-danger fs-5" href="{{ route('cocktails.create') }}">Crea <i
-                        class="fa-solid fa-plus ms-1 fs-6"></i>
-                </a>
-                <a class="btn btn-outline-danger fs-5" href="{{ route('ingredients.index') }}">Lista ingredienti <i
                         class="fa-solid fa-plus ms-1 fs-6"></i>
                 </a>
 
             </header>
+            <div class="text-center mb-4">
+                <a class="btn btn-outline-danger fs-5" href="{{ route('ingredients.index') }}">
+                    Lista ingredienti <i class="fa-solid fa-forward ms-1 fs-6"></i>
+                </a>
+            </div>
             @if (session('new_record'))
                 <div class="alert alert-success w-75 mx-auto" role="alert">
                     {{ session('new_record') }}

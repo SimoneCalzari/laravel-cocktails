@@ -43,17 +43,18 @@
                         name="gradazione" required value="{{ old('gradazione') }}">
                 </div>
 
-
-                @foreach ($ingredients as $ingredient)
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="name" value="{{ $ingredient->id }}"
-                            name="ingredients[]" {{ in_array($ingredient->id, old('ingredients', [])) ? 'checked' : '' }}>
-                        <label class="form-check-label" for="name">{{ $ingredient->name }}</label>
-                    </div>
-                @endforeach
-
-
-                {{-- // storage  --}}
+                <div class="mb-3">
+                    <h5>Ingredienti</h5>
+                    @foreach ($ingredients as $ingredient)
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="ingredient{{ $ingredient->id }}"
+                                value="{{ $ingredient->id }}" name="ingredients[]"
+                                {{ in_array($ingredient->id, old('ingredients', [])) ? 'checked' : '' }}>
+                            <label class="form-check-label"
+                                for="ingredient{{ $ingredient->id }}">{{ ucfirst($ingredient->name) }}</label>
+                        </div>
+                    @endforeach
+                    {{-- // storage  --}}
                 <div class="input-group my-4">
                     <input type="file" class="form-control" id="inputGroupFile02" name="img">
                     <label class="input-group-text" for="inputGroupFile02">Upload</label>
