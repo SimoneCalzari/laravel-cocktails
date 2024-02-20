@@ -19,7 +19,7 @@
                     </ul>
                 </div>
             @endif
-            <form action="{{ route('cocktails.store') }}" method="POST">
+            <form action="{{ route('cocktails.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="nome" class="form-label">Nome Cocktail</label>
@@ -53,10 +53,11 @@
                 @endforeach
 
 
-
-
-
-
+                {{-- // storage  --}}
+                <div class="input-group my-4">
+                    <input type="file" class="form-control" id="inputGroupFile02" name="img">
+                    <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                </div>
 
                 <div>
                     <button type="submit" class="btn btn-outline-danger">Crea <i

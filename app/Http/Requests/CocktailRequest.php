@@ -27,6 +27,7 @@ class CocktailRequest extends FormRequest
             // 'ingredienti' => 'required|string|max:80',
             'gradazione' => 'required|integer|max:255',
             'ingredients' => 'nullable|exists:ingredients,id',
+            'img' => 'nullable|image',
 
         ];
     }
