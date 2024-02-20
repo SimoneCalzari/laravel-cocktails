@@ -9,10 +9,15 @@
                 </div>
             @endif
             <div class="border border-danger rounded mx-auto d-flex w-75 overflow-hidden ">
-                <img src="https://picsum.photos/200" class="w-50" alt="cocktail">
+                @if ($cocktail->img)
+                    <img src="{{ asset('storage/' . $cocktail->img) }}" class="w-50" alt="cocktail">
+                @else
+                    <img src="https://picsum.photos/200" class="w-50" alt="cocktail">
+                @endif
                 <div class="w-50 p-4">
                     <h5 class="card-title">Nome</h5>
                     <p class="card-text">{{ $cocktail->nome }}</p>
+
                     @if ($cocktail->ingredients->count())
                         <h5 class="card-title">Ingredienti</h5>
                         <ul>
@@ -24,6 +29,7 @@
                             @endforeach
                         </ul>
                     @endif
+                    
                     <h5 class="card-title">Alcolico</h5>
                     <p class="card-text">{{ $cocktail->alcolico ? 'Si' : 'No' }}</p>
                     <h5 class="card-title">Gradazione</h5>

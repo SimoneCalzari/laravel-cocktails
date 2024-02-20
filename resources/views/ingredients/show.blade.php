@@ -5,9 +5,10 @@
         <div class="container py-5 g-3 ">
             @if (session('update_record'))
                 <div class="alert alert-success w-75 mx-auto" role="alert">
-                    {{ session('update_record') }}
+                    {{ session('new_record') }}
                 </div>
             @endif
+
             <div class="border border-danger rounded mx-auto d-flex w-50  overflow-hidden m-2  ">
                 <div class="w-50 p-4 flex-grow-1">
                     <h3 class="text-center">#{{ $ingredient->id }} - {{ ucfirst($ingredient->name) }}</h3>
