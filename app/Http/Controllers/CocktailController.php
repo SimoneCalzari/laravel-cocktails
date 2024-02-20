@@ -83,6 +83,11 @@ class CocktailController extends Controller
         } else {
             $cocktail->ingredients()->sync([]);
         }
+        if($cocktail->img){
+            Storage::delete($cocktail->img);
+            $cocktail->img = Storage::put('uploads', $data['img']);
+        }
+       
         $cocktail->save();
 
         return redirect()->route('cocktails.show', $cocktail)->with('update_record', "Il cocktail $cocktail->nome #$cocktail->id è stato aggiornato con successo");
@@ -92,7 +97,8 @@ class CocktailController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Cocktail $cocktail)
-    {
+    {   
+        Storage::delete($cocktail->img);
         $cocktail->ingredients()->sync([]);
         $nome_cocktail = $cocktail->nome;
         $id_cocktail = $cocktail->id;
